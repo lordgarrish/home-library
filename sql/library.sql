@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS authors (
+author_id SERIAL PRIMARY KEY,
+first_name VARCHAR(15) NOT NULL,
+last_name VARCHAR(20) NOT NULL);
+
+CREATE TABLE IF NOT EXISTS books (
+book_id SERIAL PRIMARY KEY,
+title VARCHAR(100) NOT NULL,
+genre VARCHAR(10) NOT NULL,
+author_id INT NOT NULL,
+CONSTRAINT fk_author
+FOREIGN KEY(author_id)
+REFERENCES authors(author_id) ON DELETE CASCADE);
